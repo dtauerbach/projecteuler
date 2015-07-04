@@ -28,7 +28,7 @@ def getPrimesLessThan(num):
             primes.append(i)
     return primes
 
-def get_new_hammings(prime, new_hammings, hammings, max_num):
+def getNewHammings(prime, new_hammings, hammings, max_num):
     return set(map(lambda x: prime*x if prime*x <= max_num else 1, new_hammings)).difference(hammings)
 
 def computeLenHammings(prime_list, max_num):
@@ -42,7 +42,7 @@ def computeLenHammings(prime_list, max_num):
         old_hammings = set(hammings)
         cur_hammings = set([])
         for prime in prime_list:
-            cur_hammings = get_new_hammings(prime, new_hammings, old_hammings, max_num).union(cur_hammings)
+            cur_hammings = getNewHammings(prime, new_hammings, old_hammings, max_num).union(cur_hammings)
         if len(cur_hammings) == 0:
             return len(hammings)
         new_hammings = list(cur_hammings)
